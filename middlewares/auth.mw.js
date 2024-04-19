@@ -46,6 +46,31 @@ const verifySignUpBody = async (req, res, next) => {
     }
 }
 
+
+const verifySignInBody = async (req,res,next) => {
+    try {
+       if(!req.body.userId){
+        res.status(400).send({
+            message : "Failed! User id is not provided in the request."
+        })
+       } 
+
+       if(!req.body.password){
+        res.status(400).send({
+            message : "Failed! Password is not provided in the request."
+        })
+       }
+
+        next()
+    
+    } catch (error) {
+        console.log("Error occurred : ", error)
+        res.status(400).send({
+            message : "Error occurred while logging in."
+        })
+    }
+}
 module.exports = {
-    verifySignUpBody : verifySignUpBody
+    verifySignUpBody : verifySignUpBody,
+    verifySignInBody : verifySignInBody
 }
