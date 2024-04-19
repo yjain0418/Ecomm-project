@@ -52,6 +52,7 @@ async function init(){
  * Stich the route to server
  */
 require("./routes/auth.route")(app)
+require("./routes/category.route")(app)
 
 app.listen(serverConfig.PORT, () => {
     console.log("Server is connected.")

@@ -35,6 +35,7 @@ exports.signup = async (req, res) => {
                 createdAt : user_create.createdAt,
                 updatedAt : user_create.updatedAt
             }
+            
             res.status(201).send(res_obj)
         }catch(err){
             console.log("Error while registering the user : ", err)
