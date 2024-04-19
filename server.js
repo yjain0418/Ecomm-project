@@ -6,6 +6,9 @@ const user_model = require("./models/user.model")
 const bcryptjs = require("bcryptjs")
 const app = express()
 
+
+app.use(express.json()) //Middleware
+
 mongoose.connect(dbConfig.DB_URL)
 
 const db = mongoose.connection
@@ -44,6 +47,11 @@ async function init(){
         console.log(e)
     }
 }
+
+/**
+ * Stich the route to server
+ */
+require("./routes/auth.route")(app)
 
 app.listen(serverConfig.PORT, () => {
     console.log("Server is connected.")
