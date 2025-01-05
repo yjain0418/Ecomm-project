@@ -9,7 +9,14 @@ const app = express()
 
 app.use(express.json()) //Middleware
 
-mongoose.connect(dbConfig.DB_URL)
+require('dotenv').config();
+
+const mongoURI = dbConfig.DB_URL;
+if(!mongoURI || typeof mongoURI != 'string') {
+    console.log("Error in MONGODB URI");
+    return;
+}
+mongoose.connect(mongoURI)
 
 const db = mongoose.connection
 
